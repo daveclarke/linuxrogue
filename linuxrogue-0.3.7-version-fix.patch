@@ -1,0 +1,20 @@
+diff -c linuxrogue-0.3.7/play.c linuxrogue-0.3.7-version-fix/play.c
+*** linuxrogue-0.3.7/play.c	2007-08-13 17:51:01.000000000 -0400
+--- linuxrogue-0.3.7-version-fix/play.c	2011-11-11 19:45:39.525645114 -0500
+***************
+*** 295,301 ****
+  			throw();
+  			break;
+  		case ROGUE_KEY_VERSION:
+! 			message("LinuxRogue v0.3.6 -- A rogue clone for Linux. (Ashwin N was here)", 0);
+  			break;
+  		case ROGUE_KEY_QUIT:
+  			quit(0);
+--- 295,301 ----
+  			throw();
+  			break;
+  		case ROGUE_KEY_VERSION:
+! 			message("LinuxRogue v0.3.7: Rogue clone for Linux / coredumpcentral.org", 0);
+  			break;
+  		case ROGUE_KEY_QUIT:
+  			quit(0);

@@ -1,0 +1,41 @@
+LinuxRogue v0.3.7
+Packaged by Rogue Central @ coredumpcentral.org
+
+The following two patches are included in this archive:
+
+-------------------------------------------------------------------------------
+
+1. linuxrogue-0.3.7-qwerty-wizkeys.patch
+
+This patch makes two changes to LinuxRogue v0.3.7's Wizard Mode features.
+
+The first change regarded a feature which was not functional in non-X Linux
+ttys. It was moved to another key.
+
+The second change regarded a feature which was accessed by pressing a well-known
+key while in Wizard Mode. The key, however, negated the feature. This was spun
+off into its own command.
+
+Note that this only applies to the QWERTY keyboard. It does not affect the
+DVORAK compile option. If someone has a DVORAK keyboard, contributions are
+welcome, please visit Rogue Central @ coredumpcentral.org.
+
+You're probably wondering what the keys are :) If you want to know, see the 
+separate linuxrogue-0.3.7-wizard.txt included this archive.
+
+-------------------------------------------------------------------------------
+
+2. linuxrogue-0.3.7-version-fix.patch
+
+The original LinuxRogue v0.3.7 tarball still reported "v0.3.6" when pressing
+the 'v' key. This patch updates the version.
+
+-------------------------------------------------------------------------------
+
+One or both of these patches can be applied in any order.
+From the main "linuxrogue-v0.3.7-roguecentral" directory (containing the 
+"linuxrogue-v0.3.7" folder and everything else), type:
+
+patch -p0 -i patchname.patch
+
+Enjoy! -core_dump

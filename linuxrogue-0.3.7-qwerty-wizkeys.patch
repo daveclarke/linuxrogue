@@ -1,0 +1,104 @@
+diff -c linuxrogue-0.3.7/keys.qwerty.h linuxrogue-0.3.7-qwerty-wizkeys/keys.qwerty.h
+*** linuxrogue-0.3.7/keys.qwerty.h	2007-08-13 17:51:01.000000000 -0400
+--- linuxrogue-0.3.7-qwerty-wizkeys/keys.qwerty.h	2011-11-11 19:18:31.034486779 -0500
+***************
+*** 83,89 ****
+  #define ROGUE_KEY_WIZ_SHOW_TRAPS  '\024'
+  #define ROGUE_KEY_WIZ_SHOW_OBJS   '\017'
+  #define ROGUE_KEY_SHOW_AV_HP      '\001'
+! #define ROGUE_KEY_WIZ_NEW_OBJ     '\177'
+  #define ROGUE_KEY_WIZ_SHOW_MONST  '\015'
+  
+  #endif	/* _KEYS_QWERTY_H_ */
+--- 83,92 ----
+  #define ROGUE_KEY_WIZ_SHOW_TRAPS  '\024'
+  #define ROGUE_KEY_WIZ_SHOW_OBJS   '\017'
+  #define ROGUE_KEY_SHOW_AV_HP      '\001'
+! /* Does not work with non-X ttys: #define ROGUE_KEY_WIZ_NEW_OBJ     '\177'*/
+! #define ROGUE_KEY_WIZ_NEW_OBJ     '\021'
+  #define ROGUE_KEY_WIZ_SHOW_MONST  '\015'
++ /* Command separated from a function where it was useless */
++ #define ROGUE_KEY_WIZ_RING_INFO   '\004'
+  
+  #endif	/* _KEYS_QWERTY_H_ */
+diff -c linuxrogue-0.3.7/play.c linuxrogue-0.3.7-qwerty-wizkeys/play.c
+*** linuxrogue-0.3.7/play.c	2007-08-13 17:51:01.000000000 -0400
+--- linuxrogue-0.3.7-qwerty-wizkeys/play.c	2011-11-11 19:21:29.941249651 -0500
+***************
+*** 389,394 ****
+--- 389,404 ----
+  				message(unknown_command, 0);
+  			}
+  			break;
++ 		case ROGUE_KEY_WIZ_RING_INFO:
++ 			if (wizard)
++ 			{
++ 				wiz_ring_info();
++ 			}
++ 			else
++ 			{
++ 				message(unknown_command, 0);
++ 			}
++ 			break;
+  		case ROGUE_KEY_SAVE_GAME:
+  			save_game();
+  			break;
+diff -c linuxrogue-0.3.7/ring.c linuxrogue-0.3.7-qwerty-wizkeys/ring.c
+*** linuxrogue-0.3.7/ring.c	2007-08-13 17:51:01.000000000 -0400
+--- linuxrogue-0.3.7-qwerty-wizkeys/ring.c	2011-11-11 19:24:17.540076175 -0500
+***************
+*** 250,263 ****
+  			message(buf, 0);
+  		}
+  	}
+! 	if (wizard)
+  	{
+  		sprintf(buf, "ste %d, r_r %d, e_r %d, r_t %d, s_s %d, a_s %d, reg %d, r_e %d, s_i %d, m_a %d, aus %d",
+  			stealthy, r_rings, e_rings, r_teleport, sustain_strength,
+  			add_strength, regeneration, ring_exp, r_see_invisible,
+  			maintain_armor, auto_search);
+  		message(buf, 0);
+! 	}
+  }
+  
+  void ring_stats(boolean pr)
+--- 250,274 ----
+  			message(buf, 0);
+  		}
+  	}
+! 	/*if (wizard)
+  	{
+  		sprintf(buf, "ste %d, r_r %d, e_r %d, r_t %d, s_s %d, a_s %d, reg %d, r_e %d, s_i %d, m_a %d, aus %d",
+  			stealthy, r_rings, e_rings, r_teleport, sustain_strength,
+  			add_strength, regeneration, ring_exp, r_see_invisible,
+  			maintain_armor, auto_search);
+  		message(buf, 0);
+! 	}*/
+! }
+! 
+! void wiz_ring_info()
+! {
+! 	char buf[DCOLS];
+! 
+! 	sprintf(buf, "ste %d, r_r %d, e_r %d, r_t %d, s_s %d, a_s %d, reg %d, r_e %d, s_i %d, m_a %d, aus %d",
+! 		stealthy, r_rings, e_rings, r_teleport, sustain_strength,
+! 		add_strength, regeneration, ring_exp, r_see_invisible,
+! 		maintain_armor, auto_search);
+! 	message(buf, 0);
+  }
+  
+  void ring_stats(boolean pr)
+diff -c linuxrogue-0.3.7/ring.h linuxrogue-0.3.7-qwerty-wizkeys/ring.h
+*** linuxrogue-0.3.7/ring.h	2007-08-13 17:51:01.000000000 -0400
+--- linuxrogue-0.3.7-qwerty-wizkeys/ring.h	2011-11-11 19:23:54.446648974 -0500
+***************
+*** 19,24 ****
+--- 19,26 ----
+  
+  void inv_rings(void);
+  
++ void wiz_ring_info(void);
++ 
+  void ring_stats(boolean pr);
+  
+  #endif	/* _RING_H_ */
