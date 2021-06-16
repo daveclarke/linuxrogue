@@ -1,0 +1,5 @@
+docker run \
+  --name gcc \
+  -v ~/Projects/linuxrogue-0.3.7-roguecentral:/src \
+  -it \
+  gcc /bin/bash
