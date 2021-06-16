@@ -83,7 +83,10 @@
 #define ROGUE_KEY_WIZ_SHOW_TRAPS  '\024'
 #define ROGUE_KEY_WIZ_SHOW_OBJS   '\017'
 #define ROGUE_KEY_SHOW_AV_HP      '\001'
-#define ROGUE_KEY_WIZ_NEW_OBJ     '\177'
+/* Does not work with non-X ttys: #define ROGUE_KEY_WIZ_NEW_OBJ     '\177'*/
+#define ROGUE_KEY_WIZ_NEW_OBJ     '\021'
 #define ROGUE_KEY_WIZ_SHOW_MONST  '\015'
+/* Command separated from a function where it was useless */
+#define ROGUE_KEY_WIZ_RING_INFO   '\004'
 
 #endif	/* _KEYS_QWERTY_H_ */

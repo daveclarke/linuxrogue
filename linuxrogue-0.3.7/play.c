@@ -389,6 +389,16 @@ CH:
 				message(unknown_command, 0);
 			}
 			break;
+		case ROGUE_KEY_WIZ_RING_INFO:
+			if (wizard)
+			{
+				wiz_ring_info();
+			}
+			else
+			{
+				message(unknown_command, 0);
+			}
+			break;
 		case ROGUE_KEY_SAVE_GAME:
 			save_game();
 			break;

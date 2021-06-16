@@ -19,6 +19,8 @@ void gr_ring(object *ring, boolean assign_wk);
 
 void inv_rings(void);
 
+void wiz_ring_info(void);
+
 void ring_stats(boolean pr);
 
 #endif	/* _RING_H_ */
